@@ -1,0 +1,31 @@
+<h1>{{ title }}</h1>
+<h2 [innerHtml]="subtitle"></h2>
+<h3 *ngIf="user.skills">Habilidades: {{ user.skills }}</h3>
+<h3 *ngIf="bestSkill">
+  Mejor habilidad: <strong [innerHtml]="bestSkill"></strong>
+</h3>
+<h4 *ngIf="totalPoints">
+  Puntos totales: <strong>{{ totalPoints }}</strong>
+</h4>
+<h4 *ngIf="userDepartment">
+  <!-- Usted debe ser de: <strong>{{ user.ubigeo?.department }}</strong> -->
+  Usted debe ser de: <strong>{{ userDepartment }}</strong>
+</h4>
+
+<div>
+  <form [formGroup]="form" (ngSubmit)="onSubmit()">
+    Buscar correo:
+    <input formControlName="username" placeholder="Usuario" />
+    <button>buscar</button>
+  </form>
+  <p *ngIf="loading">Cargando...</p>
+  <p *ngIf="email">Correo: {{ email }}</p>
+</div>
+
+<p>
+  <button (click)="updateUser('Gerald')">Actualizar usuario</button>
+</p>
+
+<p>
+  <button (click)="newUser()">Nuevo usuario</button>
+</p>

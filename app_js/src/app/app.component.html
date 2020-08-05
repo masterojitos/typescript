@@ -1,0 +1,27 @@
+<h1>{{ title }}</h1>
+<h2>{{ subtitle }}</h2>
+<h3 *ngIf="skills">Habilidades: {{ skills }}</h3>
+<h3 *ngIf="bestSkill">
+  Mejor habilidad: <strong [innerHtml]="bestSkill"></strong>
+</h3>
+<h4 *ngIf="totalPoints">
+  Puntos totales: <strong>{{ totalPoints }}</strong>
+</h4>
+
+<div>
+  <form [formGroup]="form" (ngSubmit)="onSubmit()">
+    Buscar correo:
+    <input formControlName="username" placeholder="Usuario" />
+    <button>buscar</button>
+  </form>
+  <p *ngIf="loading">Cargando...</p>
+  <p *ngIf="email">Correo: {{ email }}</p>
+</div>
+
+<p>
+  <button (click)="updateUser()">Actualizar usuario</button>
+</p>
+
+<p>
+  <button (click)="newUser()">Nuevo usuario</button>
+</p>
